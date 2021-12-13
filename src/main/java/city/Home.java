@@ -12,9 +12,9 @@ public class Home extends Building {
     public Home(int area, int levels, Address address) {
         super(area, levels, address);
         if (levels > 3) {
-            this.levels = levels;
+            throw new IllegalArgumentException("Error, max level 3.");
         }
-        throw new IllegalArgumentException("Error, max level 3.");
+        this.levels = levels;
     }
 
     public Home(int area, Address home) {
