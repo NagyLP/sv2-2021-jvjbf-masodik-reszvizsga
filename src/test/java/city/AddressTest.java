@@ -1,4 +1,4 @@
-/*package city;
+package city;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,4 +13,4 @@ class AddressTest {
         assertEquals("Kossuth", address.getStreet());
         assertEquals(6, address.getBuildingNumber());
     }
-}*/
+}

@@ -22,7 +22,7 @@ public class HumanFileManager {
                         fileLinesPiece[1]));
             }
         } catch (IOException ioe) {
-            throw new IllegalStateException("Data Error.", ioe);
+            throw new IllegalStateException("Can't read file!", ioe);
         }
     }
 
@@ -42,7 +42,7 @@ public class HumanFileManager {
 
     private boolean isHumanMale(Human human) {
         char idFirstChar = human.getIdentityNumber().charAt(0);
-        if (idFirstChar == 1 || idFirstChar == 3) {
+        if (idFirstChar == '1' || idFirstChar == '3') {
             return true;
         }
         return false;

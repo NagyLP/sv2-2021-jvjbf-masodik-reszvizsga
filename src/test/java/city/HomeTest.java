@@ -1,4 +1,4 @@
-/*package city;
+package city;
 
 import org.junit.jupiter.api.Test;
 
@@ -43,4 +43,4 @@ class HomeTest {
     void testNumberOfPeopleCanFit() {
         assertEquals(12, home.calculateNumberOfPeopleCanFit());
     }
-}*/
+}
