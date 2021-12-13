@@ -16,7 +16,7 @@ public class City {
 
     public void addBuilding(Building building) {
         if (building.getArea() > fullArea - getCityArea()) {
-            throw new IllegalArgumentException(String.format(, "City can't be larger than %d", fullArea));
+            throw new IllegalArgumentException(String.format("City can't be larger than %d", fullArea));
         }
         buildings.add(building);
     }
@@ -29,7 +29,7 @@ public class City {
         return fullArea;
     }
 
-    public Building findHighestBuildingInCity() {
+    public Building findHighestBuilding() {
         if (buildings.size() > 0) {
             Building highestBuilding = buildings.get(0);
             for (Building item : buildings) {
@@ -52,5 +52,22 @@ public class City {
         return foundBuildings;
     }
 
+    public boolean isThereBuildingWithMorePeopleThan(int numberOfPeopleCanFit) {
+        for (Building item : buildings) {
+            if (item.calculateNumberOfPeopleCanFit() > numberOfPeopleCanFit) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public String getName() {
+        return name;
+    }
+    public List<Building> getBuildings() {
+        return buildings;
+    }
+    public long getFullArea() {
+        return fullArea;
+    }
 }
