@@ -10,16 +10,20 @@ public class Words {
     public void addWord(String word) {
         if (word.contains(" ")) {
             throw new IllegalArgumentException("It should be one word!");
-        } else if (word.toUpperCase().contains(word)) {
+        } else if (!word.toLowerCase().equals(word)) {
             throw new IllegalArgumentException("Word should be lower case!");
         }
         words.add(word);
     }
 
     public boolean isThereAWordTwice() {
+        List<String> finderList = new ArrayList<>();
         for (String item : words) {
-            if (words.contains(item))
+            if (!finderList.contains(item)) {
+                finderList.add(item);
+            } else {
                 return true;
+            }
         }
         return false;
     }
