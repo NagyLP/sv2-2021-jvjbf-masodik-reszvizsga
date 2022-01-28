@@ -67,14 +67,20 @@ public class City {
                 .toList();
     }
 
+//    public boolean isThereBuildingWithMorePeopleThan(int numberOfPeopleCanFit) {
+//        for (Building item : buildings) {
+//            if (item.calculateNumberOfPeopleCanFit() > numberOfPeopleCanFit) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
     public boolean isThereBuildingWithMorePeopleThan(int numberOfPeopleCanFit) {
-        for (Building item : buildings) {
-            if (item.calculateNumberOfPeopleCanFit() > numberOfPeopleCanFit) {
-                return true;
-            }
-        }
-        return false;
+        return buildings.stream()
+                .anyMatch(b -> b.calculateNumberOfPeopleCanFit() > numberOfPeopleCanFit);
     }
+
 
     public String getName() {
         return name;
