@@ -1,6 +1,7 @@
 package city;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class City {
@@ -29,18 +30,25 @@ public class City {
         return fullArea;
     }
 
-    public Building findHighestBuilding() {
-        if (buildings.size() > 0) {
-            Building highestBuilding = buildings.get(0);
-            for (Building item : buildings) {
-                if (highestBuilding.getLevels() < item.getLevels()) {
-                    highestBuilding = item;
-                }
-            }
-            return highestBuilding;
+//    public Building findHighestBuilding() {
+//        if (buildings.size() > 0) {
+//            Building highestBuilding = buildings.get(0);
+//            for (Building item : buildings) {
+//                if (highestBuilding.getLevels() < item.getLevels()) {
+//                    highestBuilding = item;
+//                }
+//            }
+//            return highestBuilding;
+//        }
+//        throw new IllegalStateException("This is not work. City is limited.");
+//    }
+
+
+        public Building findHighestBuilding() {
+            return buildings.stream()
+                    .max(Comparator.comparing(Building::getLevels))
+                    .orElseThrow();
         }
-        throw new IllegalStateException("This is not work. City is limited.");
-    }
 
     public List<Building> findBuildingsByStreet(String street) {
         List<Building> foundBuildings = new ArrayList<>();
@@ -64,9 +72,11 @@ public class City {
     public String getName() {
         return name;
     }
+
     public List<Building> getBuildings() {
         return buildings;
     }
+
     public long getFullArea() {
         return fullArea;
     }
