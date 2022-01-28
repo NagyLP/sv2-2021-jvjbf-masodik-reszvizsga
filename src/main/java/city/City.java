@@ -44,21 +44,27 @@ public class City {
 //    }
 
 
-        public Building findHighestBuilding() {
-            return buildings.stream()
+    public Building findHighestBuilding() {
+        return buildings.stream()
 //                    .max(Comparator.comparingInt(Building::getLevels))
-                    .max(Comparator.comparing(Building::getLevels))
-                    .orElseThrow(() -> new IllegalArgumentException("Empty Building"));
-        }
+                .max(Comparator.comparing(Building::getLevels))
+                .orElseThrow(() -> new IllegalArgumentException("Empty Building"));
+    }
+
+//    public List<Building> findBuildingsByStreet(String street) {
+//        List<Building> foundBuildings = new ArrayList<>();
+//        for (Building item : buildings) {
+//            if (item.getAddress().getStreet().equals(street)) {
+//                foundBuildings.add(item);
+//            }
+//        }
+//        return foundBuildings;
+//    }
 
     public List<Building> findBuildingsByStreet(String street) {
-        List<Building> foundBuildings = new ArrayList<>();
-        for (Building item : buildings) {
-            if (item.getAddress().getStreet().equals(street)) {
-                foundBuildings.add(item);
-            }
-        }
-        return foundBuildings;
+        return buildings.stream()
+                .filter(b ->b.getAddress().getStreet().equals(street))
+                .toList();
     }
 
     public boolean isThereBuildingWithMorePeopleThan(int numberOfPeopleCanFit) {
