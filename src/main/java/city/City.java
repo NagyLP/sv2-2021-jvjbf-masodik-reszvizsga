@@ -46,6 +46,7 @@ public class City {
 
         public Building findHighestBuilding() {
             return buildings.stream()
+//                    .max(Comparator.comparingInt(Building::getLevels))
                     .max(Comparator.comparing(Building::getLevels))
                     .orElseThrow(() -> new IllegalArgumentException("Empty Building"));
         }
